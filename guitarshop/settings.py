@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lab4'
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,37 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from django.shortcuts import render
+from django.urls import path
+
+from django.contrib import admin
+from django.urls import path, include
+
+def home(request):
+    # список назв в'юшок
+    pages = [
+        {'name': 'view1', 'title': 'Вюшка 1'},
+        {'name': 'view2', 'title': 'Вюшка 2'},
+        {'name': 'view3', 'title': 'Вюшка 3'},
+        {'name': 'view4', 'title': 'Вюшка 4'},
+        {'name': 'view5', 'title': 'Вюшка 5'},
+    ]
+    return render(request, 'lab4/home.html', {'pages': pages, 'title': 'Головна сторінка'})
+
+def view1(request):
+    return render(request, 'lab4/view.html', {'title': 'Вюшка 1'})
+
+def view2(request):
+    return render(request, 'lab4/view.html', {'title': 'Вюшка 2'})
+
+def view3(request):
+    return render(request, 'lab4/view.html', {'title': 'Вюшка 3'})
+
+def view4(request):
+    return render(request, 'lab4/view.html', {'title': 'Вюшка 4'})
+
+def view5(request):
+    return render(request, 'lab4/view.html', {'title': 'Вюшка 5'})
+
+from django.urls import path
